@@ -1,0 +1,33 @@
+version: "3"
+services:
+  web:
+    # replace username/repo:tag with your name and image details
+    image: igornardin/newtonpython:v1.0
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 50M
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "4000:80"
+    networks:
+      - webnet
+networks:
+  webnet:
+  
+  
+  # docker-stats-exporter:
+  #   container_name: docker-stats-exporter
+  #   image: wywywywy/docker_stats_exporter:latest
+  #   network_mode: 'host'
+  #   ports:
+  #     - '9487:9487'
+  #   volumes: 
+  #     - '/var/run/docker.sock:/var/run/docker.sock'
+  #     - '/usr/bin/docker:/usr/bin/docker'
+
+
+
